@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundBlast</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="spinner"></div>
+            <p class="loading-text">Loading Content, Please be patient...</p>
+        </div>
+    </div>
+<!-- Rest of your page content here -->
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="Music Portal">
+    </div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact-us">Contact Us</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">More</a>
+            <div class="dropdown-content">
+                <a href="#trending">Trending Now</a>
+                <a href="#top-charts">Top Charts</a>
+                <a href="#new-releases">New Releases</a>
+                <a href="#latest-albums">Latest Albums</a>
+                <a href="#genres">Genres</a>
+                <a href="#old-songs">Old Songs</a>
+                <a href="#reviews">Reviews</a>
+            </div>
+        </li>
+    </ul>
+    <button class="navbar-toggle" id="navbar-toggle">&#9776;</button> <!-- Light/Dark Mode Toggle --> <label class="switch"> <input type="checkbox" id="theme-toggle"> <span class="slider"></span> </label>
+    <div id="visitorCount" class="visitor-count"></div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" style="background: url('images/Music.png') no-repeat center center/cover;">
+    <div class="hero-content">
+        <h1>Welcome to the SoundBlast</h1>
+        <p>Our platform is designed to bring you closer to the sounds you love, with an unparalleled selection of tracks, albums, and exclusive content from the most diverse creator community on earth.</p>
+        
+    </div>
+</section>
+
+<!-- Scrolling Ticker -->
+<div id="ticker" class="ticker"></div>
+
+<!-- User Status Indicator -->
+<div id="user-status-indicator" style="display: none;">
+    Logged in as <span id="user-name"></span>
+    <button id="logout-btn" style="display: none;">Logout</button>
+</div>
+
+<!-- Register and Login Buttons -->
+ 
+<section class="auth-buttons">
+    <button id="register-btn" class="modal-btn">Register</button>
+    <button id="login-btn" class="modal-btn">Login</button>
+</section>
+
+<!-- Register Form Modal -->
+<div id="register-modal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-title">Register</h2>
+        <form id="register-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <label for="storage-option">Store Data:</label>
+            <select id="storage-option">
+                <option value="local">Permanently (Local Storage)</option>
+                <option value="session">Temporarily (Session Storage)</option>
+            </select>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+        <p id="register-feedback"></p>
+        <button class="close-btn" onclick="closeModal('register-modal')">Close</button>
+    </div>
+</div>
+
+<!-- Login Form Modal -->
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-title">Login</h2>
+        <form id="login-form">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+        <p id="login-feedback"></p>
+        <button class="close-btn" onclick="closeModal('login-modal')">Close</button>
+    </div>
+</div>
+<br>
+
+<!-- JavaScript for Authentication -->
+ <!--
+
+<script>
+    // Register Event
+    $('#register-form').on('submit', function(event) {
+        event.preventDefault();
+        const username = $('#username').val();
+        const password = $('#password').val();
+        const storageOption = $('#storage-option').val();
+
+        const storage = storageOption === 'local' ? localStorage : sessionStorage;
+
+        if (storage.getItem(username)) {
+            $('#register-feedback').text('This account already exists. Please choose a different username.');
+        } else {
+            storage.setItem(username, password);
+            $('#register-feedback').text('Registration successful! You can now log in.');
+            $('#register-form')[0].reset();
+        }
+    });
+
+    // Login Event
+    $('#login-form').on('submit', function(event) {
+        event.preventDefault();
+        const username = $('#login-username').val();
+        const password = $('#login-password').val();
+        
+        const userPassword = localStorage.getItem(username) || sessionStorage.getItem(username);
+
+        if (!userPassword) {
+            $('#login-feedback').text('Incorrect username. Please try again.');
+        } else if (userPassword !== password) {
+            $('#login-feedback').text('Incorrect password. Please try again.');
+        } else {
+            $('#login-feedback').text('Login successful!');
+            $('#login-form')[0].reset();
+            // Additional actions upon successful login can be added here
+        }
+    });
+
+    // Modal Control Functions
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove('active');
+    }
+
+    document.getElementById('register-btn').addEventListener('click', function() {
+        document.getElementById('register-modal').classList.add('active');
+    });
+
+    document.getElementById('login-btn').addEventListener('click', function() {
+        document.getElementById('login-modal').classList.add('active');
+    });
+</script>
+-->
+
+<!-- Main Content -->
+ 
+<div class="content">
+
+    
+    <!-- Trending Now -->
+    <section id="trending" class="section">
+        <h2>Trending Now</h2>
+        <div id="trendingAlbums" class="albums"></div>
+    </section>
+
+    <!-- Top Charts -->
+    <section id="top-charts" class="section">
+        <h2>Top Charts</h2>
+        <div id="topChartsAlbums" class="albums"></div>
+    </section>
+    <section class="hero" style="background: url('images/Music1.jpg') no-repeat center center/cover;">
+        <div class="hero-content">
+            <h1>Catch new releases first on soundblast</h1>
+            <p>Our New Releases section is your go-to spot for discovering the latest tracks, albums, and EPs that have just dropped.</p>
+        </div>
+    </section>
+    <!-- New Releases -->
+    <section id="new-releases" class="section">
+        <h2>New Releases</h2>
+        <div id="newReleasesAlbums" class="albums"></div>
+    </section>
+
+    <section class="hero" style="background: url('images/Music2.jpg') no-repeat center center/cover;">
+        <div class="hero-content">
+            <h1>Find amazing albums here</h1>
+            <p>Whether you're into pop, hip-hop, rock, electronic, or any other genre, our curated list of new releases ensures you never miss out on the newest sounds that are making waves.</p>
+        </div>
+    </section>
+
+    <!-- Latest Albums -->
+    <section id="latest-albums" class="section">
+        <h2>Latest Albums</h2>
+        <div id="latestAlbums" class="albums"></div>
+    </section>
+
+    <!-- Genres -->
+    <section id="genres" class="section">
+        <h2>Genres</h2>
+        <div id="genresList" class="albums"></div>
+    </section>
+
+    <!-- Old Songs -->
+    <section id="old-songs" class="section">
+        <h2>Old Songs</h2>
+        <div id="oldSongsList" class="albums"></div>
+    </section>
+    
+    <section class="hero" style="background: url('images/Music3.jpg') no-repeat center center/cover;">
+        <div class="hero-content">
+            <h1>Explore top artists here today</h1>
+            <p>Discover new music, trending songs, and albums from your favorite artists</p>
+        </div>
+    </section>
+    <!-- Top Artists -->
+    <section id="top-artists" class="section">
+        <h2>Top Artists</h2>
+        <div id="topArtists" class="albums"></div>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages" class="section">
+        <h2>Languages</h2>
+        <div id="languagesList" class="albums"></div>
+    </section>
+
+    <!-- Top Searched Songs -->
+    <section id="top-searched" class="section">
+        <h2>Top Searched Songs</h2>
+        <div id="topSearchedSongs" class="albums"></div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section">
+        <h2>Gallery</h2>
+        <div id="galleryImages" class="gallery"></div>
+    </section>
+    <section class="hero" style="background: url('images/Music4.jpg') no-repeat center center/cover;">
+        <div class="hero-content">
+            <h1>Contant us | Send your honest reviews</h1>
+            <p>Your opinions and views are important to us, So reach out so we can make our website better.</p>
+        </div>
+    </section>
+    <!-- Reviews -->
+    <section id="reviews" class="section">
+        <h2>Reviews</h2>
+        <div class="reviews-container">
+            <div class="review">
+                <p><strong>John Doe:</strong> "Amazing platform! The music selection is great and easy to navigate."</p>
+            </div>
+            <div class="review">
+                <p><strong>Jane Smith:</strong> "Love the new releases section. Can't wait to see more updates!"</p>
+            </div>
+            <div class="review">
+                <p><strong>David Williams:</strong> "Awesome website! The interface is sleek, and the music recommendations are spot on."</p>
+            </div>
+            <div class="review">
+                <p><strong>Sarah Lee:</strong> "Great experience! I can easily find all my favorite genres in one place."</p>
+            </div>
+            <div class="review">
+                <p><strong>Mark Johnson:</strong> "The music streaming quality is excellent. Highly recommend this site!"</p>
+            </div>
+            <div class="review">
+                <p><strong>Emily Clark:</strong> "The layout is very clean and easy to use, I love exploring new genres here."</p>
+            </div>
+            <div class="review">
+                <p><strong>Robert Brown:</strong> "Fantastic user experience. Streaming is smooth, and I can always find the latest albums."</p>
+            </div>
+        </div>
+        <p>Leave a review here...</p>
+        <form id="feedback-form">
+            <textarea name="review" placeholder="Write your review here..."></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+    </section>
+
+    <!-- Contact Us -->
+    <section class="hero" style="background: url('images/Music5.jpg') no-repeat center center/cover;">
+        <div class="hero-content">
+            <h1>Visit us</h1>
+            <p>We're thrilled to welcome you to SoundBlast headquarters! Nestled in the vibrant heart of Lagos, our headquarters is the epicenter of innovation, creativity, and passion for music.</p>
+        </div>
+    </section>
+    <section id="contact-us" class="section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feel free to reach out to us. We'd love to hear from you!</p>
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <br>
+            <button type="submit">Send Message</button>
+        </form>
+        <h2>Visit Us</h2>
+        <div id="map-container">
+             <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.332354486058!2d3.3447652795248373!3d6.605558176340729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b9232246d658d%3A0x7abcde53f2b47f7!2sAPTECH%20COMPUTER%20EDUCATION%2C%20ALLEN%20BRANCH!5e0!3m2!1sen!2sng!4v1732208561229!5m2!1sen!2sng" 
+            width="100%" 
+            height="500" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- Listen or Download Modal -->
+<div id="listen-download-modal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-title">Choose an Option</h2>
+        <img id="song-image" src="images/Place.jpg" alt="Song Image" class="song-image">
+        <p id="selected-song"></p>
+        <div id="music-player" class="music-player" style="display: none;">
+            <audio id="audio-player" controls style="width: 100%;">
+                <source id="audio-source" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <p id="listening-prompt" style="display: none;">You're listening to the song</p>
+        </div>
+        <button id="listen-btn" class="modal-btn">Listen</button>
+        <button id="download-btn" class="modal-btn">Download</button>
+        <button class="close-btn" onclick="closeModal('listen-download-modal')">Close</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+    "trending": [
+        "Dance The Night - Dua Lipa", "Flowers - Miley Cyrus", "Anti-Hero - Taylor Swift", "Calm Down - Rema & Selena Gomez", 
+        "Last Night - Morgan Wallen", "Kill Bill - SZA", "Unholy - Sam Smith & Kim Petras", "Creepin' - Metro Boomin, The Weeknd, & 21 Savage",
+        "Fast Car - Luke Combs", "I'm Good (Blue) - David Guetta & Bebe Rexha", "Cupid - FIFTY FIFTY", "Karma - Taylor Swift",
+        "As It Was - Harry Styles", "Where She Goes - Bad Bunny", "Die For You - The Weeknd", "Eyes Closed - Ed Sheeran", 
+        "Chemical - Post Malone", "Seven - Jung Kook ft. Latto", "Tattoo - Loreen", "Padam Padam - Kylie Minogue"
+    ],
+    "topCharts": [
+        "Butter - BTS", "Blinding Lights - The Weeknd", "Shivers - Ed Sheeran", "Levitating - Dua Lipa ft. DaBaby", 
+        "Save Your Tears - The Weeknd & Ariana Grande", "Peaches - Justin Bieber ft. Daniel Caesar & Giveon", "Good 4 U - Olivia Rodrigo",
+        "Stay - The Kid LAROI & Justin Bieber", "Industry Baby - Lil Nas X & Jack Harlow", "Montero - Lil Nas X",
+        "Heat Waves - Glass Animals", "Bad Habits - Ed Sheeran", "Easy on Me - Adele", "Drivers License - Olivia Rodrigo", 
+        "As It Was - Harry Styles", "Kill Bill - SZA", "Unholy - Sam Smith & Kim Petras", "About Damn Time - Lizzo", 
+        "Running Up That Hill - Kate Bush", "abcdefu - GAYLE"
+    ],
+    "newReleases": [
+        "Vampire - Olivia Rodrigo", "What Was I Made For? - Billie Eilish", "Praising You - Rita Ora ft. Fatboy Slim", 
+        "Psycho - Anne-Marie & Aitch", "Wish You The Best - Lewis Capaldi", "Chemical - Post Malone", "Eyes Closed - Ed Sheeran",
+        "Five Leaf Clover - Luke Combs", "Angry - The Rolling Stones", "Daylight - David Kushner", 
+        "Slow Dancing - V - BTS", "Good Good - Usher, Summer Walker, & 21 Savage", "Better Place - NSYNC", 
+        "Slime You Out - Drake & SZA", "Meltdown - Travis Scott ft. Drake", "Love Like This - Zayn", 
+        "Greedy - Tate McRae", "Calm Down - Rema & Selena Gomez", "Seven - Jung Kook ft. Latto", "Paint the Town Red - Doja Cat"
+    ],
+    "latestAlbums": [
+        "Midnights - Taylor Swift", "Subtract (-) - Ed Sheeran", "Guts - Olivia Rodrigo", "Endless Summer Vacation - Miley Cyrus", 
+        "Her Loss - Drake & 21 Savage", "Come Home The Kids Miss You - Jack Harlow", "SOS - SZA", 
+        "Special - Lizzo", "Mr. Morale & The Big Steppers - Kendrick Lamar", "Harry's House - Harry Styles", 
+        "Being Funny In A Foreign Language - The 1975", "The Highlights - The Weeknd", "Positions - Ariana Grande", 
+        "Planet Her - Doja Cat", "Justice - Justin Bieber", "Future Nostalgia - Dua Lipa", 
+        "Life Support - Madison Beer", "In These Silent Days - Brandi Carlile", "Montero - Lil Nas X", "Chemistry - Kelly Clarkson"
+    ],
+    "genres": [
+        "Rock", "Pop", "Jazz", "Classical", "Hip Hop", "Electronic", "Blues", "Indie", "Country", "Reggae", 
+        "R&B", "Alternative", "Metal", "Folk", "Punk", "Soul", "Techno", "House", "Disco", "Latin"
+    ],
+    "oldSongs": [
+        "Bohemian Rhapsody - Queen", "Billie Jean - Michael Jackson", "Smells Like Teen Spirit - Nirvana", "Like a Rolling Stone - Bob Dylan", 
+        "Imagine - John Lennon", "Hotel California - Eagles", "Hey Jude - The Beatles", "I Will Always Love You - Whitney Houston", 
+        "Purple Rain - Prince", "Stairway to Heaven - Led Zeppelin"
+    ],
+    "topArtists": [
+        "Taylor Swift", "The Weeknd", "Drake", "Ariana Grande", "BTS", "Justin Bieber", "Ed Sheeran", "Harry Styles", 
+        "Olivia Rodrigo", "Billie Eilish", "Dua Lipa", "SZA", "Miley Cyrus", "Post Malone", "Doja Cat"
+    ],
+    "languages": [
+        "English", "Spanish", "French", "German", "Italian", "Portuguese", "Chinese", "Japanese", 
+        "Korean", "Arabic"
+    ],
+    "topSearched": [
+        "Bad Guy - Billie Eilish", "Shape of You - Ed Sheeran", "Blinding Lights - The Weeknd", "Rolling in the Deep - Adele", 
+        "Uptown Funk - Mark Ronson ft. Bruno Mars", "Old Town Road - Lil Nas X", "Despacito - Luis Fonsi & Daddy Yankee", 
+        "See You Again - Wiz Khalifa ft. Charlie Puth", "Thinking Out Loud - Ed Sheeran", "Rockstar - Post Malone ft. 21 Savage"
+    ],
+    "gallery": [
+        "images/Place.jpg", "miley_cyrus.jpg", "taylor_swift.jpg", "rema_selena_gomez.jpg", "morgan_wallen.jpg", 
+        "sza.jpg", "sam_smith_kim_petras.jpg", "metro_boomin_weeknd.jpg", "luke_combs.jpg", "david_guetta_bebe_rexha.jpg"
+    ],
+    "userFeatures": {
+        "registeredUsers": {
+            "canDownloadAlbums": true,
+            "canListenOnly": false
+        },
+        "nonRegisteredUsers": {
+            "canDownloadAlbums": false,
+            "canListenOnly": true
+        }
+    },
+    "feedbackForm": {
+        "fields": [
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Your Name"
+            },
+            {
+                "name": "email",
+                "type": "email",
+                "label": "Your Email"
+            },
+            {
+                "name": "message",
+                "type": "textarea",
+                "label": "Your Feedback"
+            }
+        ]
+    },
+    "menuLinks": [
+        { "text": "About Us", "url": "/about" },
+        { "text": "Site Map", "url": "/sitemap" },
+        { "text": "Gallery", "url": "/gallery" },
+        { "text": "Queries", "url": "/queries" },
+        { "text": "Contact Us", "url": "/contact" }
+    ],
+    "userStatus": {
+        "isLoggedIn": false,
+        "userName": "",
+        "userEmail": ""
+    }
+}
